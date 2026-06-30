@@ -2,75 +2,113 @@
 <html lang="bn">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>আমার AI চ্যাটবট</title>
 <style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
   body {
-    font-family: Arial, sans-serif;
-    background: #f0f2f5;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     height: 100vh;
-    margin: 0;
+    width: 100vw;
+    overflow: hidden;
   }
   #chat-container {
-    width: 400px;
-    height: 600px;
-    background: white;
-    border-radius: 10px;
-    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+    height: 100vh;
+    width: 100vw;
     display: flex;
     flex-direction: column;
   }
   #chat-header {
-    background: #4a90e2;
+    background: rgba(255,255,255,0.1);
+    backdrop-filter: blur(10px);
     color: white;
-    padding: 15px;
-    border-radius: 10px 10px 0 0;
-    font-weight: bold;
-    text-align: center;
+    padding: 20px 30px;
+    font-size: 20px;
+    font-weight: 600;
+    border-bottom: 1px solid rgba(255,255,255,0.2);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  #chat-header::before {
+    content: "🤖";
+    font-size: 24px;
   }
   #chat-box {
     flex: 1;
-    padding: 15px;
+    padding: 30px;
     overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    max-width: 900px;
+    width: 100%;
+    margin: 0 auto;
   }
   .message {
-    margin: 10px 0;
-    padding: 10px 15px;
-    border-radius: 15px;
-    max-width: 75%;
+    margin: 8px 0;
+    padding: 14px 20px;
+    border-radius: 18px;
+    max-width: 70%;
     word-wrap: break-word;
+    line-height: 1.5;
+    font-size: 15px;
+    animation: fadeIn 0.3s ease;
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
   }
   .user-msg {
-    background: #4a90e2;
-    color: white;
+    background: rgba(255,255,255,0.95);
+    color: #333;
     margin-left: auto;
+    border-bottom-right-radius: 4px;
   }
   .bot-msg {
-    background: #e4e6eb;
-    color: black;
+    background: rgba(255,255,255,0.15);
+    backdrop-filter: blur(10px);
+    color: white;
+    border: 1px solid rgba(255,255,255,0.2);
+    border-bottom-left-radius: 4px;
   }
   #input-area {
     display: flex;
-    padding: 10px;
-    border-top: 1px solid #ddd;
+    padding: 20px 30px 30px;
+    max-width: 900px;
+    width: 100%;
+    margin: 0 auto;
+    gap: 12px;
   }
   #user-input {
     flex: 1;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 20px;
+    padding: 16px 22px;
+    border: none;
+    border-radius: 30px;
     outline: none;
+    font-size: 15px;
+    background: rgba(255,255,255,0.95);
   }
   #send-btn {
-    margin-left: 10px;
-    padding: 10px 20px;
-    background: #4a90e2;
+    padding: 16px 30px;
+    background: #333;
     color: white;
     border: none;
-    border-radius: 20px;
+    border-radius: 30px;
     cursor: pointer;
+    font-size: 15px;
+    font-weight: 500;
+    transition: transform 0.15s ease;
+  }
+  #send-btn:hover {
+    transform: scale(1.05);
+  }
+  #chat-box::-webkit-scrollbar {
+    width: 6px;
+  }
+  #chat-box::-webkit-scrollbar-thumb {
+    background: rgba(255,255,255,0.3);
+    border-radius: 10px;
   }
 </style>
 </head>
